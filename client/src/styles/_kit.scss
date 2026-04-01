@@ -1,0 +1,684 @@
+:root {
+    --button-height: 50px;
+    --button-border-radius: 16px;
+    --button-font-size: 16px;
+    --button-padding: 20px;
+    --button-background-color: #{$color-brand-1};
+    --button-focus-color: #{$color-brand-2};
+    --button-text-color: #fff;
+    --button-hover-background-color: #{$color-grey-text};
+    --button-hover-text-color: #fff;
+
+    --outlined-button-border-color: #{$color-brand-1};
+    --outlined-button-text-color: #{$color-brand-1};
+    --outline-button-hover-background-color: #{$color-brand-1};
+    --outline-button-hover-text-color: #fff;
+}
+
+html,
+body {
+    font-family: 'OpenSans', Arial;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $color-dark;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
+body.no-scroll {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width);
+}
+
+a {
+    color: $color-brand-2;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: $color-brand-3;
+    }
+}
+
+.content-empty {
+    font-size: 24px;
+    padding: 30px;
+    border: 1px solid $color-grey-border;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.centered-block {
+    @extend %centered-block;
+}
+
+.extended-block {
+    @extend %extended-block;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img:not([src]) {
+    visibility: hidden;
+}
+
+button {
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.button {
+    @extend %button;
+}
+
+.outlined-button {
+    @extend %outlined-button;
+}
+
+.link-button {
+    display: inline;
+    border: none;
+    background: none;
+    padding: 0;
+    color: $color-brand-2;
+    transition: color 0.3s;
+
+    &:hover {
+        color: $color-brand-1;
+    }
+}
+
+article, .article {
+    .content-title {
+        font-weight: 600;
+        font-size: 20px;
+        
+        @media screen and (max-width: 992px) {
+            font-size: 18px;
+        }
+    }
+            
+    .content-lead {
+        font-size: 22px;
+        font-weight: 600;
+
+        @media screen and (max-width: 992px) {
+            font-size: 18px;
+        }
+    }
+
+    img, video {
+        vertical-align: top;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+
+    iframe {
+        max-width: 100%;
+    }
+
+    p {
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 992px) {
+            margin-bottom: 10px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 25px;
+
+        @media screen and (max-width: 992px) {
+            margin-bottom: 15px;
+        }
+    }
+
+    a {
+        color: $color-brand-1;
+
+        &:hover {
+            color: $color-brand-3;
+        }
+    }
+
+    strong, b {
+        font-weight: 600;
+    }
+
+    ul, ol {
+        margin: 0 0 20px;
+        padding-left: 20px;
+
+        @media screen and (max-width: 992px) {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+    }
+}
+
+/* ----------------------------------------- Заголовки ----------------------------------------- */
+
+%headlines {
+    line-height: 1.3;
+    margin: 0;
+}
+
+h1 {
+    @extend %headlines;
+
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 992px) {
+        font-size: 28px;
+    }
+}
+
+h2 {
+    @extend %headlines;
+
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 25px;
+    
+    @media screen and (max-width: 992px) {
+        font-size: 20px;
+    }
+}
+
+h3 {
+    @extend %headlines;
+
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+    
+    @media screen and (max-width: 992px) {
+        font-size: 18px;
+    }
+}
+
+h4 {
+    @extend %headlines;
+
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+    
+    @media screen and (max-width: 992px) {
+        font-size: 16px;
+    }
+}
+
+h5 {
+    @extend %headlines;
+
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 15px;
+    
+    @media screen and (max-width: 992px) {
+        font-size: 16px;
+    }
+}
+
+h6 {
+    @extend %headlines;
+
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 15px;
+    
+    @media screen and (max-width: 992px) {
+        font-size: 14px;
+    }
+}
+
+p {
+    margin: 0 0 15px 0;
+}
+
+/* ----------------------------------------- 404 ошибка ----------------------------------------- */
+
+.page-404 {
+    @extend %centered-block;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    .page-404-image {
+        margin: 0 80px 0 0;
+        width: 250px;
+        max-width: 100%;
+    }
+
+    .page-404-title {
+        font-weight: 600;
+        font-size: 30px;
+        margin: 0 0 13px 0;
+    }
+
+    .page-404-text {
+        margin: 0 0 22px 0;
+    }
+
+    .page-404-button {
+        @extend %button;
+
+        display: inline-flex;
+    }
+
+    @media (max-width: 800px) {
+        flex-flow: column nowrap;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    
+        .page-404-image {
+            margin: 0 0 20px 0;
+            max-width: 100%;
+        }
+
+        .page-404-title {
+            font-size: 20px;
+        }
+
+        .page-404-block {
+            text-align: center;
+        }
+    }
+}
+
+/* ----------------------------------------- Всплывающее окно ----------------------------------------- */
+
+.popup-overlay {
+    @include flex($align: center, $justify: center);
+
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba($color-dark, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .popup-window {
+        position: relative;
+        width: calc(100% - 20px);
+        max-width: 410px;
+        box-sizing: border-box;
+        background: $color-brand-1;
+        box-shadow: 5px 5px 20px 0px #3A3C3D4D;
+        overflow: auto;
+        max-height: calc(100% - 20px);
+        border-radius: 10px;
+    }
+
+    .popup-close-button {
+        border: none;
+        padding: 0;
+        background: none;
+        padding: 0;
+        position: absolute;
+        z-index: 5;
+        right: 20px;
+        top: 20px;
+        color: $color-light;
+        transition: color 0.3s;
+        cursor: pointer;
+
+        body.non-touch-device &:hover {
+            color: $color-brand-1;
+        }
+
+        svg {
+            display: block;
+        }
+    }
+
+    .popup-content {
+        padding: 50px 55px;
+        text-align: center;
+
+        @media (max-width: 500px) {
+            padding: 35px;
+        }
+
+        @media (max-width: 400px) {
+            padding: 25px;
+        }
+    }
+
+    .popup-message {
+        h1 {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            margin: 0 0 9px 0;
+            text-align: center;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        p {
+            margin: 0 0 5px 0;
+            line-height: 1.3;
+            text-align: center;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        li {
+            margin: 0 0 10px 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &.message .popup-window {
+        max-width: 520px;
+    }
+}
+
+/* ----------------------------------------- Поля ----------------------------------------- */
+
+.floating-label-input {
+    position: relative;
+    background-color: $color-light;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: opacity 0.3s, border-color 0.3s;
+    
+    &:focus-within {
+        border-color: 1px solid $color-brand-2;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        * {
+            cursor: not-allowed;
+        }
+    }
+
+    &.field-error {
+        .input-label, .input-field {
+            color: $color-error;
+        }
+    }
+
+    input:focus~.input-label,
+    input:not(:focus):not(:placeholder-shown)~.input-label,
+    textarea:focus~.input-label,
+    textarea:not(:focus):not(:placeholder-shown)~.input-label,
+    /*select:focus~.input-label,*/
+    select.not-empty~.input-label {
+        color: var(--field-lifted-label-color, $color-grey-text);
+        transform: scale(.777777778) translate3d(0, -15px, .1px)
+    }
+
+    .input-field {
+        background: transparent;
+        border: none;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-weight: 400;
+        min-height: 60px;
+        height: 0;
+        padding: 32px 20px 20px;
+        color: $color-dark;
+        width: 100%;
+                    
+        @media screen and (max-width: 992px) {
+            font-size: 14px;
+            min-height: 50px;
+            padding: 32px 10px 20px;
+        }
+    }
+
+    textarea.input-field {
+        display: block;
+        padding-top: 0;
+        margin-top: 27px;
+        border-radius: 0 0 10px 10px;
+        padding-bottom: 8px;
+        resize: none;
+        min-height: 98px;
+        height: calc(100% - 25px);
+        color: $color-dark;
+                                    
+        @media screen and (max-width: 992px) {
+            min-height: 70px;
+        }
+    }
+
+    .input-label {
+        font-size: 16px;
+        font-weight: 400;
+        color: $color-dark;
+        left: 20px;
+        pointer-events: none;
+        position: absolute;
+        top: 20px;
+        transform: translateZ(.1px);
+        transform-origin: top left;
+        transition: transform .3s ease, color .3s ease;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 100%;
+                            
+        @media screen and (max-width: 992px) {
+            font-size: 14px;
+            top: 18px;
+            left: 10px;
+        }
+    }
+
+    select.input-field {
+        appearance: none;
+        padding-right: 40px;
+        //background: url(../img/dropdowm-arrow.svg) right center no-repeat;
+    }
+}
+
+/* ----------------------------------------- Сворачиваемый контент ----------------------------------------- */
+
+.collapse {
+    .collapse-wrap {
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+    }
+}
+
+/* ----------------------------------------- Частично сворачиваемый контент ----------------------------------------- */
+
+.folder {
+    .folder-wrap {
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+    }
+}
+
+/* ----------------------------------------- Градиенты на краях прокручиваемых областей ----------------------------------------- */
+
+.scroll-watcher-decorations.has-scroll {
+    position: relative;
+
+    &::before, &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 10px;
+        width: 30px;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(90deg,rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    &.scroll-begin::before {
+        opacity: 0;
+    }
+
+    &.scroll-end::after {
+        opacity: 0;
+    }
+}
+
+.loading {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        margin-top: -25px;
+        border: 6px solid $color-brand-1;
+        border-left: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-radius: 50%;
+        animation: spin 0.75s infinite linear;
+        z-index: 5;
+    }
+
+    &::after{
+        content: "";
+        border-radius: 10px;
+        background-color: rgba($color-grey-background, 0.5);
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 4;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.pagination {
+    list-style: none;
+    @include flex();
+    gap: 10px;
+    padding-left: 0;
+    margin-top: 30px;
+    margin-bottom: 0;
+    overflow: auto;
+
+    @media screen and (max-width: 992px) {
+        margin-top: 15px;
+        padding-bottom: 10px;
+        gap: 5px;
+    }
+
+    li {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        overflow: hidden;
+        border: 1px solid $color-light;
+        background-color: transparent;
+        @include flex($justify: center, $align: center);
+        color: $color-light;
+        flex-shrink: 0;
+        transition: background-color 0.3s, border-color 0.3s;
+            
+        @media screen and (max-width: 992px) {
+            width: 40px;
+            height: 40px;
+        }
+
+        &:hover {
+            color: $color-light;
+            background-color: rgba($color-brand-2, 0.8);
+            border-color: $color-brand-2;
+        }
+
+        &.pager-current {
+            color: $color-light;
+            background-color: $color-brand-2;
+            border-color: $color-brand-2;
+        }
+
+        &.pager-next, &.pager-prev {
+            @include flex($justify: center, $align: center);
+            .pager-icon {
+                width: 40px;
+                height: 40px;
+                                    
+                @media screen and (max-width: 992px) {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+        a {
+            @include flex($justify: center, $align: center);
+            width: 100%;
+            height: 100%;
+            color: inherit;
+            transition: 0.3s;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.page-wrap {
+    @include flex($direction: column, $align: stretch);
+    min-height: 100%;
+}
+
+.page-header {
+    width: 100%;
+}
+
+.page-content {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.page-footer {
+    width: 100%;
+	max-width: 100%;
+}

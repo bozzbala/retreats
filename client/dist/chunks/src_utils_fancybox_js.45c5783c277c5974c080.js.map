@@ -1,0 +1,1 @@
+{"version":3,"file":"chunks/src_utils_fancybox_js.45c5783c277c5974c080.js","mappings":";;;;;;;;;;;;;;;AAAA;AACA;AACA;AACA","sources":["webpack://client/./src/utils/fancybox.js"],"sourcesContent":["import \"@fancyapps/ui/dist/fancybox/fancybox.css\";\nimport { Fancybox } from \"@fancyapps/ui\";\n\nexport default Fancybox;\n"],"names":[],"ignoreList":[],"sourceRoot":""}

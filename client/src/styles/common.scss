@@ -1,0 +1,96 @@
+$color-brand-1: #5F8F6F;
+$color-brand-2: #E6EEE8;
+$color-brand-3: #C49C5B;
+
+$color-error: #EE4A4A;
+$color-warning: #FFBA40;
+$color-success: #6FCF97;
+
+$color-dark: #2F312F;
+$color-light: #FFFFFF;
+$color-grey-text: #767676;
+$color-grey-border: #C6D0D9;
+$color-grey-background: #F5F7F4;
+$color-page-background: $color-grey-background;
+$page-layout-width: 992px;
+
+$page-margin-desktop: 60px;
+$page-margin-mobile: 20px;
+
+@mixin flex($direction: row, $wrap: nowrap, $align: flex-start, $justify: flex-start) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+%centered-block {
+    padding-left: $page-margin-desktop;
+    padding-right: $page-margin-desktop;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $page-layout-width + $page-margin-desktop * 2;
+        
+    @media screen and (max-width: 992px) {
+        padding-left: $page-margin-mobile;
+        padding-right: $page-margin-mobile;
+    }
+}
+
+%extended-block {
+    padding-left: $page-margin-mobile;
+    padding-right: $page-margin-mobile;
+
+    @media screen and (max-width: 992px) {
+        padding-left: $page-margin-mobile;
+        padding-right: $page-margin-mobile;
+    }
+}
+
+%button {
+    @include flex($align: center, $justify: center);
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 40px;
+    background-color: $color-brand-3;
+    font-family: 'OpenSans', sans-serif;
+    color: $color-light;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    
+    &:hover {
+        background-color: $color-brand-2;
+        color: $color-dark;
+    }
+}
+
+%outlined-button {
+    @include flex($align: center, $justify: center);
+
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 40px;
+    background-color: transparent;
+    border: 1px solid $color-brand-2;
+    color: $color-brand-2;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+
+    &:hover {
+        background-color: $color-brand-3;
+        color: $color-light;
+        border-color: $color-brand-3;
+    }
+}
