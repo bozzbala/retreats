@@ -582,41 +582,153 @@ body {
         }
 
         .swiper-slide {
-            width: 328px;
-            padding: 20px 15px;
-            background-color: $color-brand-1;            
-            border-radius: 10px;
+            width: 260px;
+            padding: 16px 14px 18px;
+            background-color: $color-brand-1;
+            border-radius: 16px;
             color: $color-light;
             text-align: center;
             height: auto;
+            position: relative;
+            overflow: hidden;
 
             .img {
                 width: 100%;
                 border-radius: 10px;
-                margin-bottom: 15px;
+                margin-bottom: 14px;
                 height: auto;
                 aspect-ratio: 3/4;
                 object-fit: cover;
+                display: block;
             }
 
             .title {
-                font-size: 24px;
-                margin-bottom: 5px;
+                font-size: 22px;
+                margin-bottom: 4px;
             }
 
             .description {
-                font-size: 14px;
-                margin-bottom: 15px;
+                font-size: 13px;
+                margin-bottom: 14px;
+                opacity: 0.85;
+            }
+
+            .day-details-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                background-color: rgba($color-light, 0.18);
+                border: 1px solid rgba($color-light, 0.35);
+                color: $color-light;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 8px 20px;
+                border-radius: 24px;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                letter-spacing: 0.02em;
             }
 
             .content {
-                font-size: 14px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 90%;
+                transform: translateY(100%);
+                transition: transform 0.6s;
+                background: darken($color-brand-1, 6%);
+                border-radius: 16px;
+                display: flex;
+                flex-direction: column;
+
+                .content-inner {
+                    padding: 18px 16px 20px;
+                    overflow-y: auto;
+                    flex: 1;
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .article {
+                    text-align: left;
+                    p {
+                        margin: 10px 0 0;
+                        font-size: 12.5px;
+                        line-height: 1.5;
+                        opacity: 0.9;
+                    }
+                }
+
+                .content-day {
+                    font-size: 13px;
+                    opacity: 0.7;
+                    margin-bottom: 4px;
+                }
+
+                .content-title {
+                    font-size: 17px;
+                    font-weight: 500;
+                    margin-bottom: 16px;
+                    line-height: 1.2;
+                }
+
+                .day-details-close {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    background-color: transparent;
+                    border: none;
+                    padding: 0;
+                    z-index: 3;
+                    color: $color-light;
+                    cursor: pointer;
+                    @include flex($align: center, $justify: center);
+
+                    .icon {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
 
                 ul, ol {
-                    padding-left: 20px;
+                    padding-left: 0;
                     text-align: left;
                     margin: 0;
+                    list-style: none;
+
+                    li {
+                        position: relative;
+                        margin-top: 10px;
+                        padding: 0 0 10px 16px;
+                        font-size: 12.5px;
+                        line-height: 1.4;
+                        border-bottom: 1px solid rgba($color-light, 0.12);
+
+                        &:last-child {
+                            border-bottom: none;
+                            padding-bottom: 0;
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 5px;
+                            height: 5px;
+                            border-radius: 50%;
+                            background-color: $color-brand-3;
+                        }
+                    }
                 }
+            }
+
+            &.details-open .content {
+                transform: translateY(0);
             }
         }
     }
@@ -647,27 +759,30 @@ body {
     }
 }
 
-.block-security {
+.block-faq {
     padding: 20px 0;
-
-    .security-photo {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
 
     
     .list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
         .faq-item {
-            background-color: $color-brand-1;
-            padding: 10px;
-            color: $color-light;
-            border-radius: 10px;
+            background-color: $color-light;
+            padding: 0;
+            color: $color-dark;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 5px;
+            margin-bottom: 0;
+            border: 1px solid rgba($color-grey-border, 0.8);
+            box-shadow: 0 2px 10px rgba($color-dark, 0.05);
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
 
             &.collapse-open {
+                border-color: rgba($color-brand-1, 0.35);
+                box-shadow: 0 6px 18px rgba($color-dark, 0.08);
+
                 .question-icon {
                     transform: rotate(45deg);
                 }
@@ -676,43 +791,57 @@ body {
             .item-question {
                 border: none;
                 background-color: transparent;
-                color: $color-light;
+                color: $color-dark;
                 @include flex($justify: space-between, $align: center);
                 width: 100%;
                 text-align: left;
+                padding: 14px 14px;
+                cursor: pointer;
+                gap: 12px;
 
                 .question-left {
-                    @include flex($align: center);
-                    gap: 10px;
-                    .question-img {
-                        padding: 4px;
-                        border-radius: 5px;
-                        background-color: $color-brand-2;
-    
-                        .img {
-                            width: 22px;
-                            height: 22px;
-                        }
+                    min-width: 0;
+
+                    .text {
+                        font-size: 15px;
+                        line-height: 1.35;
+                        font-weight: 600;
+                        letter-spacing: 0.01em;
                     }
                 }
 
 
                 .question-icon {
-                    width: 16px;
-                    height: 16px;
+                    width: 26px;
+                    height: 26px;
                     transition: transform 0.3s;
                     flex-shrink: 0;
+                    border-radius: 10px;
+                    background-color: rgba($color-brand-2, 0.7);
+                    @include flex($align: center, $justify: center);
 
                     .icon {
-                        width: 100%;
-                        height: 100%;
+                        width: 14px;
+                        height: 14px;
+                        color: $color-brand-1;
                     }
                 }
             }
 
             .item-answer {
-                padding-top: 15px;
-                padding-left: 30px;
+                padding: 0 14px 14px;
+
+                p {
+                    margin: 10px 0 0;
+                    font-size: 14px;
+                    line-height: 1.55;
+                    color: rgba($color-dark, 0.8);
+                }
+
+                p:first-child {
+                    margin-top: 0;
+                }
+
                 p:last-child {
                     margin-bottom: 0;
                 }
@@ -723,6 +852,44 @@ body {
 
 .block-space {
     padding: 20px 0 40px;
+
+    .space-values {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            padding-left: 14px;
+            margin-top: 6px;
+            line-height: 1.35;
+            font-size: 13px;
+            color: rgba($color-light, 0.92);
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.55em;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: $color-brand-3;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .space-zones-intro {
+        margin-bottom: 12px;
+        background-color: rgba(#ffffff, 0.09);
+        border: 1px solid rgba(#ffffff, 0.18);
+        border-radius: 14px;
+        padding: 12px;
+    }
 
     .space-block {
         background-color: $color-brand-1;
@@ -977,7 +1144,7 @@ body {
         background-color: $color-brand-1;
         color: $color-light;
         border-radius: 14px;
-        padding: 14px 12px;
+        padding: 20px;
     }
 
     .cta-text {
@@ -1006,7 +1173,7 @@ body {
             border: 1px solid rgba(#ffffff, 0.35);
             background-color: rgba(#ffffff, 0.1);
             color: $color-light;
-            border-radius: 8px;
+            border-radius: 5px;
             height: 42px;
             padding: 0 12px;
 
