@@ -12,15 +12,21 @@
     font-style: italic;
 }
 @font-face {
-    font-family: 'PlayfairDisplay';
-    src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
+    font-family: 'Lora';
+    src: url('../fonts/Lora.ttf') format('truetype');
     font-weight: 100 900;   /* диапазон весов */
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'PlayfairDisplay';
-    src: url('../fonts/PlayfairDisplay-Italic.ttf') format('truetype');
+    font-family: 'Lora';
+    src: url('../fonts/Lora-Italic.ttf') format('truetype');
     font-weight: 100 900;
     font-style: italic;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope.ttf') format('truetype');
+    font-weight: 100 900;   /* диапазон весов */
+    font-style: normal;
 }
